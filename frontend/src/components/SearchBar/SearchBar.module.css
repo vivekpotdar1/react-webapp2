@@ -1,0 +1,35 @@
+/*
+  SearchBar.module.css
+  Styles for the search input used in the header.
+*/
+
+.wrap {
+  display: grid;
+  grid-template-columns: 22px 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.icon {
+  color: var(--muted);
+}
+
+.input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text);
+  min-width: 0;
+}
+
+.hint {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+}

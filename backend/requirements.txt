@@ -1,0 +1,8 @@
+# Python libraries needed for the backend.
+# - fastapi: web API framework
+# - uvicorn: web server to run FastAPI
+# - pandas/openpyxl: read .xlsx Excel files
+fastapi
+uvicorn[standard]
+pandas
+openpyxl

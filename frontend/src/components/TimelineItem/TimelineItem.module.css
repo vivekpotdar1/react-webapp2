@@ -1,0 +1,84 @@
+/*
+  TimelineItem.module.css
+  Styles for a single activity item in the timeline list.
+  The marker color changes based on the severity data attribute.
+*/
+
+.item {
+  display: grid;
+  grid-template-columns: 12px 1fr auto;
+  gap: 12px;
+  align-items: start;
+  padding: 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.12);
+}
+
+.marker {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  margin-top: 6px;
+  background: var(--good);
+}
+
+.item[data-severity='medium'] .marker { background: var(--warn); }
+.item[data-severity='high'] .marker { background: #fb7185; }
+.item[data-severity='critical'] .marker { background: var(--bad); }
+
+.body {
+  min-width: 0;
+}
+
+.top {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 10px;
+  align-items: center;
+}
+
+.title {
+  font-weight: 700;
+}
+
+.badge {
+  font-size: 11px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.time {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+  white-space: nowrap;
+}
+
+.desc {
+  margin-top: 6px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.meta {
+  margin-top: 6px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.more {
+  padding: 8px 10px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.70);
+  cursor: pointer;
+}
+
+.more:hover {
+  color: rgba(255, 255, 255, 0.92);
+  border-color: rgba(255, 255, 255, 0.16);
+}

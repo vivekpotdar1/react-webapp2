@@ -1,0 +1,41 @@
+/*
+  ActivityTimeline.module.css
+  Styles for the timeline container (header + list layout).
+*/
+
+.panel {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+  min-width: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.sub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.count {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.list {
+  display: grid;
+  gap: 12px;
+}

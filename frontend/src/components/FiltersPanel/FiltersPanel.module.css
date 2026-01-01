@@ -1,0 +1,112 @@
+/*
+  FiltersPanel.module.css
+  Styles for the right-side filters panel (time-range pills, legend, etc.).
+*/
+
+.panel {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-weight: 700;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.clear {
+  background: transparent;
+  border: none;
+  color: rgba(59, 130, 246, 0.95);
+  cursor: pointer;
+}
+
+.block {
+  padding: 12px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.block:first-of-type {
+  border-top: none;
+}
+
+.label {
+  font-size: 12px;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(0, 0, 0, 0.15);
+  color: var(--text);
+  outline: none;
+}
+
+.pills {
+  display: flex;
+  gap: 8px;
+}
+
+.pill {
+  padding: 8px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  cursor: pointer;
+}
+
+.pill[data-active='true'] {
+  border-color: rgba(59, 130, 246, 0.55);
+  background: rgba(59, 130, 246, 0.18);
+}
+
+.pill:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.legend {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.legendRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.dotCritical, .dotHigh, .dotMedium, .dotSafe {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.dotCritical { background: var(--bad); }
+.dotHigh { background: #fb7185; }
+.dotMedium { background: var(--warn); }
+.dotSafe { background: var(--good); }
+
+.note {
+  margin-top: 12px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.5);
+}
