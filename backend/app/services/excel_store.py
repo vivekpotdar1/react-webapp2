@@ -44,6 +44,10 @@ class Activity:
 def _clean_text(value: Any) -> str:
     if value is None:
         return ""
+    # Pandas may represent empty Excel cells as NaN/NaT.
+    # Converting those to strings yields "nan", which breaks matching.
+    if pd.isna(value):
+        return ""
     text = str(value)
     return text.strip()
 
@@ -55,13 +59,23 @@ def _lower(value: Any) -> str:
 @lru_cache(maxsize=1)
 def _load_user_df() -> pd.DataFrame:
     # Read user_info.xlsx once and cache it (fast for repeated searches).
-    return pd.read_excel(user_info_path())
+    df = pd.read_excel(user_info_path())
+    df.columns = [str(c).strip() for c in df.columns]
+    return df
 
 
 @lru_cache(maxsize=1)
 def _load_activity_df() -> pd.DataFrame:
     # Read activity_timeline.xlsx once and cache it.
-    return pd.read_excel(activity_timeline_path())
+    df = pd.read_excel(activity_timeline_path())
+    df.columns = [str(c).strip() for c in df.columns]
+
+    # Many Excel sheets keep the "name" only on the first row of a block
+    # (subsequent rows are blank/merged). Forward-fill so filtering works.
+    if "name" in df.columns:
+        df["name"] = df["name"].ffill()
+
+    return df
 
 
 def refresh_cache() -> None:
@@ -192,7 +206,8 @@ def list_activities_for_name_in_range(name: str, range_key: str | None) -> list[
         ref = dt.dropna().max()
         if pd.notna(ref):
             cutoff = ref - delta
-            rows = rows[dt >= cutoff]
+            # Keep rows with missing/unparseable datetime so the UI still shows them.
+            rows = rows[dt.isna() | (dt >= cutoff)]
 
     activities: list[Activity] = []
     for _, r in rows.iterrows():

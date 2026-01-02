@@ -48,7 +48,7 @@ export default function DashboardPage({ onLogout }) {
   const [status, setStatus] = useState({ loading: false, error: '' })
 
   // selectedRange = the time filter (24h/7d/30d/1y).
-  const [selectedRange, setSelectedRange] = useState('7d')
+  const [selectedRange, setSelectedRange] = useState('1y')
 
   // debounceRef helps us avoid calling the backend on every single keypress.
   // We wait a short time after typing stops.
